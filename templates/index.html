@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Agenda Electrónica</title>
+</head>
+<body class="bg-neutral-900 m-12">
+    <div class="flex flex-col items-center bg-neutral-800 mx-20 p-4 rounded-xl">
+        <h1 class="text-3xl font-bold mb-8 text-white text-center">Agenda electronica.py</h1>
+        <ul class="flex flex-col items-center space-y-2">
+            <li>
+                <a href="{{ url_for('add_contact') }}" class="text-lime-500 font-semibold hover:underline">Registro de contactos</a>
+            </li>
+            <li>
+                <a href="{{ url_for('search') }}" class="text-lime-500 font-semibold hover:underline">Buscar contactos</a>
+            </li>
+        </ul>
+    
+<div class="text-white mt-16 border-t border-neutral-700">
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul>
+          {% for category, message in messages %}
+            <li class="{{ category }}">{{ message|safe }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+</div>
+
+</div>
+</body>
+</html>
