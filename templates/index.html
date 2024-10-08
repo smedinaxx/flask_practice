@@ -5,19 +5,25 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Agenda Electrónica</title>
 </head>
-<body class="bg-neutral-900 m-12">
-    <div class="flex flex-col items-center bg-neutral-800 mx-20 p-4 rounded-xl">
-        <h1 class="text-3xl font-bold mb-8 text-white text-center">Agenda electronica.py</h1>
-        <ul class="flex flex-col items-center space-y-2">
-            <li>
-                <a href="{{ url_for('add_contact') }}" class="text-lime-500 font-semibold hover:underline">Registro de contactos</a>
+<body class="bg-black m-12">
+    <div class="flex flex-col items-center bg-yellow-100 mx-8 sm:mx-12 md:mx-24 lg:mx-96 xl:mx-80 p-4 rounded-xl">
+        <h1 class="text-3xl font-bold mb-8 text-black text-center">Agenda electronica.py</h1>
+        <ul class="flex flex-col items-center space-y-2 w-full">
+            <li class="w-full border-b border-neutral-500 text-center">
+                <a href="{{ url_for('add_contact') }}" class="w-full text-neutral-800 font-semibold">Registro de contactos</a>
             </li>
-            <li>
-                <a href="{{ url_for('search') }}" class="text-lime-500 font-semibold hover:underline">Buscar contactos</a>
+            <li class="w-full border-b border-neutral-500 text-center">
+                <a href="{{ url_for('search') }}" class="text-neutral-800 font-semibold">Buscar contactos</a>
+            </li>
+            <li class="w-full border-b border-neutral-500 text-center">
+                <a href="{{ url_for('show_all') }}" class="text-neutral-800 font-semibold">Mostrar lista de contactos</a>
+            </li>
+            <li class="w-full border-b border-neutral-500 text-center">
+                <a href="{{ url_for('edit_contact') }}" class="text-neutral-800 font-semibold">Editar contacto</a>
             </li>
         </ul>
     
-<div class="text-white mt-16 border-t border-neutral-700">
+<div class="w-full text-neutral-800 mt-16 pt-4 border-t border-neutral-700 text-center">
 
     {% with messages = get_flashed_messages(with_categories=true) %}
       {% if messages %}

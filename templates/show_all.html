@@ -1,0 +1,18 @@
+<html lang="en"></html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de contactos</title>
+</head>
+<body>
+    <h1>Mostrar lista de contactos</h1>
+    <form method="POST" action="{{url_for('show_all')}}">
+        <!-- <label for="name">Nombre del contacto a buscar:</label> -->
+        <!-- <input type="text" name="name" id="name" required/> -->
+        <br>
+        <br>
+        <button type="submit">Mostrar contactos</button>
+    </form>
+    <a href="{{url_for('index')}}">Volver al inicio</a>
+</body>
+</html>

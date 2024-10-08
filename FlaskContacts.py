@@ -2,8 +2,8 @@
 # Crea una libreta de contactos que:
 # - ✅ Mantenga una lista de contactos
 # - ✅ Permita agregar nuevos contactos (nombre, teléfono, email)
-# - Permita buscar contactos por nombre
-# - Muestre todos los contactos
+# - ✅ Permita buscar contactos por nombre
+# - ✅ Muestre todos los contactos
 # - Permita editar la información de los contactos existentes
 # - Implemente una función para exportar los contactos a un archivo CSV
 
@@ -80,5 +80,37 @@ def search():
         return redirect(url_for('index'))
     return render_template('search_contacts.html')
 
+@app.route('/show_all', methods=['GET','POST'])
+def show_all():
+    if request.method=='POST':
+        Contacts.show_all()        
+        return redirect(url_for('index'))
+    return render_template('show_all.html')
+
+@app.route('/edit_contact', methods=['GET','POST'])
+def edit_contact():
+    if request.method == 'POST':
+        name = request.form['name']
+        contact = Contacts.search(name)
+
+        if contact:
+            field_to_edit = request.form['field']
+            new_value = request.form['new_value']
+            
+            if field_to_edit == 'name':
+                contact.edit_contact('name', new_value)
+            elif field_to_edit == 'cellphone':
+                contact.edit_contact('cellphone', new_value)
+            elif field_to_edit == 'email':
+                contact.edit_contact('email', new_value)
+            else:
+                flash("Opción no válida")
+        else:
+            flash("No se encontró el contacto para editar")
+        
+        return redirect(url_for('index'))
+    
+    return render_template('edit_contact.html')
+        
 if __name__ == '__main__':
     app.run(debug=True)
