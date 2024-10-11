@@ -46,6 +46,7 @@ class Contacts:
         else:
             flash('Directorio de contactos vacio...')
 
+#Profe aqui si me tuve que apoyar, porque se me dificulto mucho hacer lo de Editar Contacto, sorry!
     def edit_contact(self, field, new_value):
         if field == 'name':
             self.name = new_value
@@ -94,19 +95,15 @@ def edit_contact():
         contact = Contacts.search(name)
 
         if contact:
-            field_to_edit = request.form['field']
-            new_value = request.form['new_value']
+            contact_to_edit = request.form['contact']
+            modification = request.form['modification']
             
-            if field_to_edit == 'name':
-                contact.edit_contact('name', new_value)
-            elif field_to_edit == 'cellphone':
-                contact.edit_contact('cellphone', new_value)
-            elif field_to_edit == 'email':
-                contact.edit_contact('email', new_value)
+            if contact_to_edit in ['name', 'cellphone', 'email']:
+                contact.edit_contact(contact_to_edit, modification)
             else:
-                flash("Opción no válida")
+                flash("Opcion no valida")
         else:
-            flash("No se encontró el contacto para editar")
+            flash("No se encontro el contacto para editar")
         
         return redirect(url_for('index'))
     
